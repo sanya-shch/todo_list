@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {getTodos} from '../../actions';
 import TodoItem from "./TodoItem";
 import {getTodosSelector, getLoadingSelector, getTotalTodosCountSelector} from '../../selectors';
+import {Container, SortContainer, Sort, Btn, Page} from './todoListStyle';
 
 const TodoList = ({getTodos, todos, loading, totalTodosCount}) => {
     const [currentPageValues, setCurrentPageValues] = useState({page: 1, sort_field: 'id', sort_direction: 'asc'});
@@ -28,13 +29,13 @@ const TodoList = ({getTodos, todos, loading, totalTodosCount}) => {
 
     const renderPageNumbers = pageNumbers.map(number => {
         return (
-            <li
+            <Page
                 key={number}
                 id={number}
                 onClick={handleClickPage}
             >
                 {number}
-            </li>
+            </Page>
         );
     });
 
@@ -43,38 +44,36 @@ const TodoList = ({getTodos, todos, loading, totalTodosCount}) => {
     }
 
     return (
-        <div>
+        <Container>
+            <SortContainer>
+                <Sort>
+                    <Btn data-sort_field='id' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</Btn>
+                    id
+                    <Btn data-sort_field='id' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</Btn>
+                </Sort>
+                <Sort>
+                    <Btn data-sort_field='username' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</Btn>
+                    username
+                    <Btn data-sort_field='username' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</Btn>
+                </Sort>
+                <Sort>
+                    <Btn data-sort_field='email' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</Btn>
+                    email
+                    <Btn data-sort_field='email' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</Btn>
+                </Sort>
+                <Sort>
+                    <Btn data-sort_field='status' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</Btn>
+                    status
+                    <Btn data-sort_field='status' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</Btn>
+                </Sort>
+            </SortContainer>
             <div>
-                <div>
-                    <div>
-                        <button data-sort_field='id' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</button>
-                        id
-                        <button data-sort_field='id' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</button>
-                    </div>
-                    <div>
-                        <button data-sort_field='username' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</button>
-                        username
-                        <button data-sort_field='username' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</button>
-                    </div>
-                    <div>
-                        <button data-sort_field='email' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</button>
-                        email
-                        <button data-sort_field='email' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</button>
-                    </div>
-                    <div>
-                        <button data-sort_field='status' data-sort_direction='asc' onClick={e => handleClickSort(e)}>↑</button>
-                        status
-                        <button data-sort_field='status' data-sort_direction='desc' onClick={e => handleClickSort(e)}>↓</button>
-                    </div>
-                </div>
-                <div>
-                    {renderTodos}
-                </div>
-                <ul>
-                    {renderPageNumbers}
-                </ul>
+                {renderTodos}
             </div>
-        </div>
+            <SortContainer>
+                {renderPageNumbers}
+            </SortContainer>
+        </Container>
     )
 };
 

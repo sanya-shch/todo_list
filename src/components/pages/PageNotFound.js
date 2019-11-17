@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Container, Text, BackLink} from '../common/pageStyle';
 
 const PageNotFound = () => {
     return (
-        <div>
-            <Link to='/'>{'< back'}</Link>
-            <h1>404</h1>
-        </div>
+        <Container>
+            <BackLink to='/'>{'< back'}</BackLink>
+            <Text>404</Text>
+        </Container>
     )
 };
 

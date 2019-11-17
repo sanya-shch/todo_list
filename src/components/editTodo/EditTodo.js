@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import EditTodoForm from './EditTodoForm';
 import {connect} from "react-redux";
 import {useParams} from "react-router-dom";
 import {editTodo} from "../../actions";
+import {Container, Text, BackLink} from '../common/pageStyle';
 
 const EditTodo = ({editTodo,...props}) => {
     const showResults = (values) => {
@@ -13,11 +13,11 @@ const EditTodo = ({editTodo,...props}) => {
     const { id } = useParams();
 
     return (
-        <div>
-            <Link to='/'>{'< back'}</Link>
-            <h1>Edit</h1>
+        <Container>
+            <Text>Edit</Text>
+            <BackLink to='/'>{'< back'}</BackLink>
             <EditTodoForm id={id} onSubmit={showResults} />
-        </div>
+        </Container>
     )
 };
 

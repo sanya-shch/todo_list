@@ -1,30 +1,21 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {getIsAuthSelector} from '../../selectors';
+import {Container, InfoContainer, Username, Email, Status, Text, EditLink} from './todoItemStyle';
 
 const TodoItem = ({isAuthenticated, todo: {email, id, status, text, username}}) => {
     return (
-        <div>
-            <h2>
-                {username}
-            </h2>
-            <h2>
-                {email}
-            </h2>
-            <p>
-                {status}
-            </p>
-            <p>
-                {id}
-            </p>
-            <h4>
-                {text}
-            </h4>
+        <Container>
+            <InfoContainer>
+                <Username>{username}</Username>
+                <Email>{email}</Email>
+                <Status>{status}</Status>
+            </InfoContainer>
+            <Text>{text}</Text>
             {
-                isAuthenticated && <Link to={`/edit/${id}`} >Edit</Link>
+                isAuthenticated && <EditLink to={`/edit/${id}`} >Edit</EditLink>
             }
-        </div>
+        </Container>
     )
 };
 

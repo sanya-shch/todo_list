@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import AddTodoForm from './AddTodoForm';
 import {connect} from "react-redux";
 import {addTodo} from "../../actions";
+import {Container, Text, BackLink} from '../common/pageStyle';
 
 const AddTodo = ({addTodo}) => {
     const showResults = (values) => {
@@ -10,11 +10,11 @@ const AddTodo = ({addTodo}) => {
     };
 
     return (
-        <div>
-            <Link to='/'>{'< back'}</Link>
-            <h1>Add</h1>
+        <Container>
+            <Text>Add</Text>
+            <BackLink to='/'>{'< back'}</BackLink>
             <AddTodoForm onSubmit={showResults} />
-        </div>
+        </Container>
     )
 };
 

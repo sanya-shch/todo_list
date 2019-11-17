@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import LoginForm from './LoginForm';
 import {connect} from "react-redux";
 import {logIn} from "../../actions";
+import {Container, Text, BackLink} from '../common/pageStyle';
 
 const Login = ({logIn}) => {
     const showResults = (values) => {
@@ -10,11 +10,11 @@ const Login = ({logIn}) => {
     };
 
     return (
-        <div>
-            <Link to='/'>{'< back'}</Link>
-            <h1>Login</h1>
+        <Container>
+            <Text>Login</Text>
+            <BackLink to='/'>{'< back'}</BackLink>
             <LoginForm onSubmit={showResults} />
-        </div>
+        </Container>
     )
 };
 

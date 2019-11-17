@@ -1,14 +1,14 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import TodoList from "../todoList/TodoList";
+import {Container, Text, AddLink} from '../common/pageStyle';
 
 const HomePage = () => {
     return (
-        <div>
-            <h1>TodoList</h1>
-            <Link to='/create'>ADD</Link>
+        <Container>
+            <Text>TodoList</Text>
+            <AddLink to='/create'>ADD</AddLink>
             <TodoList/>
-        </div>
+        </Container>
     )
 };
 

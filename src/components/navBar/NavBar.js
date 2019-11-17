@@ -3,16 +3,13 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {logOut} from "../../actions";
 import {getIsAuthSelector} from "../../selectors";
+import {Nav} from './navbarStyle';
 
 const NavBar = ({logOut, isAuthenticated}) => {
     const clickLogout = () => logOut();
 
     return (
-        <div>
-            <Link to='/'>TodoList</Link>
-            <Link to='/create'>Add</Link>
-            <Link to='/404'>404</Link>
-
+        <Nav>
             <div>
                 {
                 isAuthenticated
@@ -20,7 +17,7 @@ const NavBar = ({logOut, isAuthenticated}) => {
                     : <Link to='/login'>Login</Link>
                 }
             </div>
-        </div>
+        </Nav>
     )
 };
 
